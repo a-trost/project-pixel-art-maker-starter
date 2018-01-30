@@ -15,12 +15,16 @@ function makeGrid() {
         let row = pixelCanvas.insertRow(0);
         for (x=0; x < width; x++) {
             let cell = row.insertCell(0);
-            cell.addEventListener('click', changeColor);
-            cell.addEventListener('mousedown', changeColor);
+            // cell.addEventListener('click', changeColor);
+            // cell.addEventListener('mousedown', changeColor);
         };
     };
+    // pixelCanvas.addEventListener('click', changeColor);
+    pixelCanvas.addEventListener('mousedown', changeColor);
 };
 
-function changeColor() {
-    this.setAttribute('style', `background: ${colorPicker.value}`);
+function changeColor(event) {
+    if (event.target.nodeName === "TD") {
+    event.target.setAttribute('style', `background: ${colorPicker.value}`);
+}
 };
